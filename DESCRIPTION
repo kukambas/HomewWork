@@ -1,0 +1,14 @@
+Package: HW6
+Type: Package
+Title: It will help me get 100 percent points from sixth homework.
+Version: 1.0
+Date: 2015-01-28
+Author: Michal Wojtasiwicz
+Maintainer: Michal Wojtasiwicz <m.wojtasiewicz@phd.ipipan.waw.pl>
+Description: It provides some utility functions
+License: GPL
+Imports: Rcpp (>= 0.11.0)
+LinkingTo: Rcpp
+Suggests: knitr,
+    testthat
+VignetteBuilder: knitr

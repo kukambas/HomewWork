@@ -1,0 +1,41 @@
+%\VignetteIndexEntry{A guide to the HW6 package}
+%\VignetteEngine{knitr::knitr}
+
+
+\documentclass[pdftex,12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[dvips,a4paper,left=2.5cm,right=2.5cm,foot=1.0cm,
+   headheight=1.0cm,top=2.0cm,margin=2.5cm]{geometry}
+\linespread{1.1}
+
+\begin{document}
+
+\begin{center}
+{\Huge A Guide to the \textsf{HW6} Package for \textsf{R}}
+
+\end{center}
+\section{Introduction}
+Package \textsf{HW6} is an answer for three very important problems.\\
+1) Finding the most frequent number in given numeric vector.\\
+2) Calculating all possible permutations for n unique elements.\\
+3) Calculating a length of shortest path between two vertices in a graph.\\\\
+
+
+\noindent The package is written very simple and with highest possible quality\\
+and efficiency what makes him very hard to beat (at least in some cases).
+\section{Algorithms description}
+\subsection{Function: \emph{mode}}
+This function is very simple. It sorts given numeric vector increasingly\\
+and then calculates longest sequence of equal values.
+
+\subsection{Function: \emph{perms}}
+Function \emph{perms} uses built-in function \emph{next\_permutation} and writes consequtive results into integer matrix.
+\subsection{Function: \emph{shortestspath}}
+This function is simply implementation of Dijkstras algorithm.
+
+\end{document}
+

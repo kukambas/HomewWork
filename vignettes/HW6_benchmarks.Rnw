@@ -1,0 +1,146 @@
+\documentclass[pdftex,12pt]{article}
+%\VignetteIndexEntry{A guide to the HW6 package}
+%\VignetteEngine{knitr::knitr}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[dvips,a4paper,left=2.5cm,right=2.5cm,foot=1.0cm,
+   headheight=1.0cm,top=2.0cm,margin=2.5cm]{geometry}
+\linespread{1.1}
+
+\begin{document}
+\begin{center}
+{\Huge Benchmarks for algorithms implemented in package \textsf{HW6}}
+
+\end{center}
+
+\section{Function: \emph{mode}}
+Finding mode in 10 random variables from Poisson distribution
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+modeR <- function(x){
+  t<-table(x)
+  as.numeric(names(which.max(t)))
+}
+library(HW6)
+library(microbenchmark)
+x <- rpois(10,2)
+microbenchmark(HW6::mode(x),modeR(x))
+@
+Finding mode in 100 random variables from Poisson distribution
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+modeR <- function(x){
+  t<-table(x)
+  as.numeric(names(which.max(t)))
+}
+library(HW6)
+library(microbenchmark)
+x <- rpois(100,2)
+microbenchmark(HW6::mode(x),modeR(x))
+@
+Finding mode in 1000 random variables from Poisson distribution
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+modeR <- function(x){
+  t<-table(x)
+  as.numeric(names(which.max(t)))
+}
+library(HW6)
+library(microbenchmark)
+x <- rpois(1000,2)
+microbenchmark(HW6::mode(x),modeR(x))
+@
+Finding mode in 10000 random variables from Poisson distribution
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+modeR <- function(x){
+  t<-table(x)
+  as.numeric(names(which.max(t)))
+}
+library(HW6)
+library(microbenchmark)
+x <- rpois(10000,2)
+microbenchmark(HW6::mode(x),modeR(x))
+@
+\newpage
+\section{Function: \emph{perms}}
+Finding all permutation for an integer vector of length 2.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(combinat)
+library(HW6)
+n = 2
+library(microbenchmark)
+microbenchmark(HW6::perms(n),permn(n))
+@
+Finding all permutation for an integer vector of length 4.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(combinat)
+library(HW6)
+n = 4
+library(microbenchmark)
+microbenchmark(HW6::perms(n),permn(n))
+@
+Finding all permutation for an integer vector of length 6.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(combinat)
+library(HW6)
+n = 6
+library(microbenchmark)
+microbenchmark(HW6::perms(n),permn(n))
+@
+Finding all permutation for an integer vector of length 8.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(combinat)
+library(HW6)
+n = 8
+library(microbenchmark)
+microbenchmark(HW6::perms(n),permn(n))
+@
+\newpage
+\section{Function: \emph{shortestpath}}
+Finding shortests path between two vertices in graph with 10 vertices and about 23 edges.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(igraph)
+library(HW6)
+G <- matrix(ifelse(runif(100)>0.5,1,0),10,10)
+G1 <- graph.adjacency(G,mode = 'directed')
+x <- 1
+y <- 4
+library(microbenchmark)
+microbenchmark(HW6::shortestpath(G,x,y),shortest.paths(G1,x,y, algorithm = 'dijkstra'))
+@
+
+Finding shortests path between two vertices in graph with 11 vertices and about 3630 edges.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(igraph)
+library(HW6)
+G <- matrix(ifelse(runif(121)>0.5,1,0),11,11)
+G1 <- graph.adjacency(G,mode = 'directed')
+x <- 1
+y <- 5
+library(microbenchmark)
+microbenchmark(HW6::shortestpath(G,x,y),shortest.paths(G1,x,y, algorithm = 'dijkstra'))
+@
+Finding shortests path between two vertices in graph with 12 vertices and about 5148 edges.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(igraph)
+library(HW6)
+G <- matrix(ifelse(runif(144)>0.5,1,0),12,12)
+G1 <- graph.adjacency(G,mode = 'directed')
+x <- 1
+y <- 7
+library(microbenchmark)
+microbenchmark(HW6::shortestpath(G,x,y),shortest.paths(G1,x,y, algorithm = 'dijkstra'))
+@
+Finding shortests path between two vertices in graph with 225 vertices and about 12600 edges.
+<<echo=FALSE, message=FALSE, warning=FALSE, error=FALSE>>=
+library(igraph)
+library(HW6)
+G <- matrix(ifelse(runif(225)>0.5,1,0),15,15)
+G1 <- graph.adjacency(G,mode = 'directed')
+x <- 1
+y <- 10
+library(microbenchmark)
+microbenchmark(HW6::shortestpath(G,x,y),shortest.paths(G1,x,y, algorithm = 'dijkstra'))
+@
+
+\end{document}

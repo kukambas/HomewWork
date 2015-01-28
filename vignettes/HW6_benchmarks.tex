@@ -1,0 +1,225 @@
+\documentclass[pdftex,12pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+%\VignetteIndexEntry{A guide to the HW6 package}
+%\VignetteEngine{knitr::knitr}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[dvips,a4paper,left=2.5cm,right=2.5cm,foot=1.0cm,
+   headheight=1.0cm,top=2.0cm,margin=2.5cm]{geometry}
+\linespread{1.1}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\begin{center}
+{\Huge Benchmarks for algorithms implemented in package \textsf{HW6}}
+
+\end{center}
+
+\section{Function: \emph{mode}}
+Finding mode in 10 random variables from Poisson distribution
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##          expr     min      lq      mean   median       uq     max neval
+##  HW6::mode(x)  16.483  18.660  23.39684  22.5475  23.9470  90.502   100
+##      modeR(x) 139.329 142.128 152.67147 143.8385 148.9705 554.518   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding mode in 100 random variables from Poisson distribution
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##          expr     min       lq      mean   median      uq     max neval
+##  HW6::mode(x)  18.349  20.5265  24.42929  24.5690  26.435  59.401   100
+##      modeR(x) 163.899 170.4300 180.75826 173.8505 178.205 414.879   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding mode in 1000 random variables from Poisson distribution
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##          expr     min      lq      mean   median       uq     max neval
+##  HW6::mode(x)  39.497  44.007  49.09814  48.8275  51.4710   89.88   100
+##      modeR(x) 419.854 426.386 464.29057 433.3825 448.7775 1583.94   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding mode in 10000 random variables from Poisson distribution
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##          expr      min       lq      mean   median       uq      max neval
+##  HW6::mode(x)  297.630  307.116  361.0033  313.647  324.843 1237.793   100
+##      modeR(x) 2921.254 2937.892 3197.6644 2969.305 3492.412 4215.338   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\newpage
+\section{Function: \emph{perms}}
+Finding all permutation for an integer vector of length 2.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##           expr    min     lq     mean median     uq     max neval
+##  HW6::perms(n) 17.727 18.971 22.44820 21.770 22.703 153.325   100
+##       permn(n) 61.267 64.067 70.34275 66.555 67.643 445.667   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding all permutation for an integer vector of length 4.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##           expr     min       lq      mean   median       uq      max neval
+##  HW6::perms(n)  18.349  20.0600  24.40755  24.2585  26.1240   69.976   100
+##       permn(n) 438.826 452.6655 483.38619 459.6630 490.6075 1278.534   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding all permutation for an integer vector of length 6.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##           expr      min        lq        mean     median        uq
+##  HW6::perms(n)    40.12    43.851    66.67288    73.5515    84.904
+##       permn(n) 12289.61 12921.720 13234.33477 13096.0375 13612.148
+##        max neval
+##    151.769   100
+##  16660.136   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding all permutation for an integer vector of length 8.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: milliseconds
+##           expr        min        lq       mean     median        uq
+##  HW6::perms(n)   1.418797   1.46778   2.257536   1.491728   1.56699
+##       permn(n) 745.798035 759.48498 788.032515 777.730142 818.27455
+##        max neval
+##   41.01076   100
+##  842.74678   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\newpage
+\section{Function: \emph{shortestpath}}
+Finding shortests path between two vertices in graph with 10 vertices and about 23 edges.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##                                              expr     min      lq
+##                        HW6::shortestpath(G, x, y)  18.349  20.215
+##  shortest.paths(G1, x, y, algorithm = "dijkstra") 186.291 189.712
+##       mean   median      uq     max neval
+##   22.53839  21.7700  23.014  84.904   100
+##  200.45409 191.4225 193.289 671.767   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Finding shortests path between two vertices in graph with 11 vertices and about 3630 edges.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##                                              expr     min      lq
+##                        HW6::shortestpath(G, x, y)  19.282  20.837
+##  shortest.paths(G1, x, y, algorithm = "dijkstra") 190.645 194.688
+##       mean   median      uq     max neval
+##   23.18218  23.0140  24.569  38.875   100
+##  203.67607 196.3985 201.375 362.007   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding shortests path between two vertices in graph with 12 vertices and about 5148 edges.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##                                              expr     min       lq
+##                        HW6::shortestpath(G, x, y)  18.971  20.5260
+##  shortest.paths(G1, x, y, algorithm = "dijkstra") 186.913 190.8005
+##      mean  median       uq     max neval
+##   22.3083  22.237  23.6360  40.119   100
+##  198.8399 193.444 195.4655 388.443   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Finding shortests path between two vertices in graph with 225 vertices and about 12600 edges.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## Unit: microseconds
+##                                              expr     min       lq
+##                        HW6::shortestpath(G, x, y)  18.971  21.3035
+##  shortest.paths(G1, x, y, algorithm = "dijkstra") 191.578 196.3985
+##       mean   median       uq     max neval
+##   23.32214  23.1695  24.5690  42.919   100
+##  206.32893 200.2860 208.0615 382.845   100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\end{document}
