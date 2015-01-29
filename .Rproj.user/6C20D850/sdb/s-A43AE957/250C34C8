@@ -1,0 +1,16 @@
+{
+    "contents" : "#include <Rcpp.h>\n#include <stdio.h>\nusing namespace Rcpp;\n//' @title Find the length of shortest path.\n//' @description Calculates the length of shortest path.\n//'\n//' @param G an 0-1 adjacency matrix which describes graph.\n//' @param x a vertex number from which path should be calculated.\n//' @param y a vertex number to which path should be calculated.\n//' @return d Length of shortest path between two given vertices.\n//'\n//' @export\n// [[Rcpp::export]]\nint shortestpath(IntegerMatrix G, int x, int y) {\n  int ncol = G.ncol();\n  int nrow = G.nrow();\n  if(ncol != nrow)\n    Rcpp::stop(\"Matrix should be quadratic\");\n  \n  if(x>ncol || y>ncol || y<0 || x<0)\n    Rcpp::stop(\"You have put wrong indices\");\n  \n  x--;\n  y--;\n  \n  int flg, j=0;\n  IntegerVector d(ncol); \n\tIntegerVector checked(ncol);\n\n\tfor (int i = 0; i < ncol; i++) {\n\t\td[i] = ncol*ncol;\n\t\tchecked[i] = 0; \n\t}\n\n\td[x] = 0;\n  \n\twhile(j < ncol){\n\t\tflg = -1;\n\t\tfor (int i = 0; i < ncol; i++)\n\t\t\tif ((checked[i] == 0) && ((flg == -1) || (d[i] < d[flg])))\n      {\n        flg= i;\n\t\t\t}\n\t\tchecked[flg] = 1;\n\n\t\tfor (int i = 0; i < ncol; i++)\n\t\t\tif (G(flg,i)>0)\n\t\t\t\tif (d[flg] + G(flg,i) < d[i]) \n\t\t\t\t\td[i] = d[flg] + G(flg,i);\n    j++;\n\t}\n  \n  return(d[y]);\n}\n",
+    "created" : 1422465192382.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1075757819",
+    "id" : "250C34C8",
+    "lastKnownWriteTime" : 1422480213,
+    "path" : "C:/main/school/dokt/e-learning/AdvancedR/hw6/package/HW6_package1/HW6/src/short_path.cpp",
+    "project_path" : "src/short_path.cpp",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "cpp"
+}

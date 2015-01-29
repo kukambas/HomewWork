@@ -1,0 +1,16 @@
+{
+    "contents" : "#include <Rcpp.h>\nusing namespace Rcpp;\n\n//' @title Mode Function\n//' @description Finds mode of given numeric vector.\n//'\n//' @param z - a numeric vector.\n//' @return Mode - the most frequent number.\n//'\n//' @export \n// [[Rcpp::export]]\ndouble mode(NumericVector z)\n{\n  if(z.size() < 1){\n    Rcpp::stop(\"Numeric vector does not have any elements\");\n  }else if(z.size() == 1){\n   double mode = z[0];\n    return(mode);\n  }\n  \n  NumericVector x = clone(z);\n  std::sort(x.begin(), x.end());\n  int cnt = 2;\n  int cnt_max = 0;\n  double mode = x[1];\n  \n  for(int i=2; i < x.size(); i++){\n    if((x[i] == x[i-1]) & (i < (x.size()-1))){\n      cnt++;        \n    }else{\n      if(cnt_max < cnt){\n        mode = x[i-1];\n        cnt_max = cnt;\n      }\n      if(cnt_max > (x.size()-i))\n        break; \n      \n      cnt = 1;\n    }\n  }\n  return mode;\n}\n\n\n\n\n\n",
+    "created" : 1422465260770.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4195532418",
+    "id" : "F797E986",
+    "lastKnownWriteTime" : 1422478601,
+    "path" : "C:/main/school/dokt/e-learning/AdvancedR/hw6/package/HW6_package1/HW6/src/modeFind.cpp",
+    "project_path" : "src/modeFind.cpp",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "cpp"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "%\\VignetteIndexEntry{A guide to the HW6 package}\n%\\VignetteEngine{knitr::knitr}\n\n\n\\documentclass[pdftex,12pt]{article}\n\n\\usepackage[T1]{fontenc}\n\\usepackage[utf8]{inputenc}\n\\usepackage[english]{babel}\n\\selectlanguage{english}\n\\usepackage[dvips,a4paper,left=2.5cm,right=2.5cm,foot=1.0cm,\n   headheight=1.0cm,top=2.0cm,margin=2.5cm]{geometry}\n\\linespread{1.1}\n\n\\begin{document}\n\n\\begin{center}\n{\\Huge A Guide to the \\textsf{HW6} Package for \\textsf{R}}\n\n\\end{center}\n\\section{Introduction}\nPackage \\textsf{HW6} is an answer for three very important problems.\\\\\n1) Finding the most frequent number in given numeric vector.\\\\\n2) Calculating all possible permutations for n unique elements.\\\\\n3) Calculating a length of shortest path between two vertices in a graph.\\\\\\\\\n\n\n\\noindent The package is written very simple and with highest possible quality\\\\\nand efficiency what makes him very hard to beat (at least in some cases).\n\\section{Algorithms description}\n\\subsection{Function: \\emph{mode}}\nThis function is very simple. It sorts given numeric vector increasingly\\\\\nand then calculates longest sequence of equal values.\n\n\\subsection{Function: \\emph{perms}}\nFunction \\emph{perms} uses built-in function \\emph{next\\_permutation} and writes consequtive results into integer matrix.\n\\subsection{Function: \\emph{shortestspath}}\nThis function is simply implementation of Dijkstras algorithm.\n\n\\end{document}\n\n",
+    "created" : 1422480346287.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2050647052",
+    "id" : "1D49A940",
+    "lastKnownWriteTime" : 1422482760,
+    "path" : "C:/main/school/dokt/e-learning/AdvancedR/hw6/package/HW6_package1/HW6/vignettes/HW6.Rnw",
+    "project_path" : "vignettes/HW6.Rnw",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "sweave"
+}

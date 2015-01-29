@@ -1,0 +1,17 @@
+{
+    "contents" : "library(testthat)\n\n## test for mode function\nexpect_error(mode('a'))\nexpect_error(mode(numeric(0)))\nexpect_equivalent(mode(2),2)\nexpect_equivalent(mode(c(1,1,1,1,1,2,2,2,2,2,3)),1)\nexpect_equivalent(mode(c(1.2,1.2,3,3,-1,1,7,1.2,3,3)),3)\n\n## test for perm function\nexpect_error(perms('a'))\nexpect_error(perms(-1))\nexpect_error(perms(1.5))\n\n## test for shortestpath function\nG <- matrix(c(0,0,0,1,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1,0,0,0,0,0),6,6)\nexpect_equivalent(shortestpath(G,1,2),3)\nexpect_equivalent(shortestpath(G,1,1),0)\nexpect_error(shortestpath(G,0,2))\nexpect_error(shortestpath(G,1,0))\nexpect_error(shortestpath(G,1,7))\nexpect_error(shortestpath(G,7,2))\nG <- matrix(1,3,5)\nexpect_error(shortestpath(G,1,2))\n\n\n\n\n",
+    "created" : 1422475879410.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1922938532",
+    "id" : "F00627FE",
+    "lastKnownWriteTime" : 1422480331,
+    "path" : "C:/main/school/dokt/e-learning/AdvancedR/hw6/package/HW6_package1/HW6/tests/testthat/test_me_HW6.R",
+    "project_path" : "tests/testthat/test_me_HW6.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

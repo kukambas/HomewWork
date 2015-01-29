@@ -1,0 +1,17 @@
+{
+    "contents" : "devtools::install_github(\"kukambas/HomewWork\")\n",
+    "created" : 1422489010428.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1326812887",
+    "id" : "10B4C7AE",
+    "lastKnownWriteTime" : 1422487876,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
